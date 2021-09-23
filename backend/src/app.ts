@@ -13,3 +13,5 @@ function startServer() {
     console.log(`Example app listening at http://localhost:${port}`);
   });
 }
+
+startServer();
