@@ -32,10 +32,9 @@ export class Order {
   @ManyToOne(() => Vendor, (vendor) => vendor.orders)
   vendor!: Vendor;
 
-  @ManyToOne(() => Guest, (guest) => guest.orders)
+  @ManyToOne(() => Guest, (guest) => guest.orders, { nullable: true })
   guest!: Vendor;
 
   @ManyToOne(() => OrderItem, (orderItem) => orderItem.order)
-  @JoinColumn()
   orderItems!: Array<OrderItem>;
 }

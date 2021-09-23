@@ -35,7 +35,4 @@ export class OrderItem {
 
   @ManyToOne(() => Order, (order) => order.orderItems)
   order!: Order;
-
-  @Column('int')
-  orderId!: number;
 }
