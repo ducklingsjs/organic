@@ -1,4 +1,5 @@
 import express from 'express';
+import Logger from './logger';
 
 const port = process.env.PORT || 3000;
 
@@ -10,7 +11,7 @@ function startServer() {
   });
 
   app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    Logger.info(`Server started on port ${port}`);
   });
 }
 
