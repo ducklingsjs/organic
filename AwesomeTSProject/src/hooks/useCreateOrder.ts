@@ -15,6 +15,9 @@ export const useCreateOrder = (): SWRResponse<any, any> => {
       createOrder: async (menuItemID: string) => {
         const fetcher = async () => {
           await apiClient('orders', HttpMethod.Post, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
               menuItemId: menuItemID,
             }),

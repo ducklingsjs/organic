@@ -17,13 +17,11 @@ import {MenuItem} from '../resources/MenuItem';
 import {useCreateOrder} from '../hooks/useCreateOrder';
 
 export const VendorScreen: FC<MainStackScreenProps<'VendorScreen'>> = ({
-  navigation,
   route,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedMenuItem, setSelectedItem] = useState<MenuItem>();
 
-  console.log(route.params.vendorId);
   const {data: vendor} = useVendor(route.params.vendorId);
   const {createOrder} = useCreateOrder();
 
@@ -35,9 +33,7 @@ export const VendorScreen: FC<MainStackScreenProps<'VendorScreen'>> = ({
   const handleOrderCreatePress = async () => {
     try {
       await createOrder(selectedMenuItem?.id);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
 
     setShowModal(false);
   };

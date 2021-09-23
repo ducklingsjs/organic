@@ -21,7 +21,6 @@ export const EventCard: FC<IEventCardProps> = ({
   ...rest
 }) => {
   const handleLocationPress = (location: string) => {
-    console.log(location);
     const scheme = Platform.select({ios: 'maps:0,0?q=', android: 'geo:0,0?q='});
     const label = 'Custom Label';
     const url = Platform.select({

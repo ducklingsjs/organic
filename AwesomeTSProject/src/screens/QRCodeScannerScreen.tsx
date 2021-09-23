@@ -16,6 +16,7 @@ export const QRCodeScannerScreen: FC<
       if (vendor) {
         navigation.replace('VendorScreen', {
           title: vendor.name,
+          vendorId: vendor.id,
         });
       }
     } catch (error) {}
