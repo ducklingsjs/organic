@@ -23,7 +23,7 @@ export class OrderItem {
   @UpdateDateColumn()
   updated_at!: number;
 
-  @Column('int', { unique: true })
+  @Column('int')
   quantity!: number;
 
   @ManyToOne(() => MenuItem)
@@ -35,4 +35,7 @@ export class OrderItem {
 
   @ManyToOne(() => Order, (order) => order.orderItems)
   order!: Order;
+
+  @Column('int')
+  orderId!: number;
 }

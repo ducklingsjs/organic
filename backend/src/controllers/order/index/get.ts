@@ -8,13 +8,13 @@ export const getOrders = async (req: Request, res: Response, next: NextFunction)
   try {
     const orders = await getRepository(Order).find({
       order: {
-        created_at: -1,
+        created_at: 1,
       },
     });
 
     for await (const order of orders) {
       const orderItems = await getRepository(OrderItem).find({
-        where: { orderId: order },
+        where: { orderId: order.id },
       });
 
       for await (const orderItem of orderItems) {
@@ -30,6 +30,7 @@ export const getOrders = async (req: Request, res: Response, next: NextFunction)
 
     res.status(200).json(orders);
   } catch (err) {
+    console.log(err);
     return next({
       data: null,
       errors: ['Something went wrong'],

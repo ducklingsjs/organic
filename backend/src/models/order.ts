@@ -26,14 +26,20 @@ export class Order {
   @UpdateDateColumn()
   updated_at!: number;
 
-  @Column('text', { unique: true })
+  @Column('text', { default: 'todo' })
   status!: 'todo' | 'process' | 'done';
 
   @ManyToOne(() => Vendor, (vendor) => vendor.orders)
   vendor!: Vendor;
 
+  @Column('int')
+  vendorId!: number;
+
   @ManyToOne(() => Guest, (guest) => guest.orders, { nullable: true })
   guest!: Vendor;
+
+  @Column('int')
+  guestId!: number;
 
   @ManyToOne(() => OrderItem, (orderItem) => orderItem.order)
   orderItems!: Array<OrderItem>;
