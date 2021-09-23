@@ -4,19 +4,16 @@ import { Order } from './order';
 import { User } from './user';
 
 @Entity()
-export class Vendor extends User {
+export class Guest extends User {
   @Column('text', { select: false })
   password!: string;
 
-  @Column('text', { unique: true })
+  @Column('text')
   name!: string;
 
-  @Column('text', { unique: true })
-  event_location!: string;
+  @Column('int')
+  age!: number;
 
-  @ManyToOne(() => Event, (event) => event.vendors)
-  event!: Array<Event>;
-
-  @OneToMany(() => Order, (order) => order.vendor)
+  @OneToMany(() => Order, (order) => order.guest)
   orders!: Array<Order>;
 }

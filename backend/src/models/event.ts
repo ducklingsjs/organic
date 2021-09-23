@@ -4,9 +4,11 @@ import {
   Entity,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Menu } from './menu';
 import { Organizator } from './organizator';
 import { Vendor } from './vendor';
 
@@ -47,4 +49,7 @@ export class Event {
 
   @ManyToOne(() => Organizator, (organizator) => organizator.events)
   organizator!: Array<Organizator>;
+
+  @OneToOne(() => Menu, (menu) => menu.event)
+  menu!: Menu;
 }
