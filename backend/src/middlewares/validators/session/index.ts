@@ -1,0 +1,1 @@
+export { loginBodyValidator } from './login';
