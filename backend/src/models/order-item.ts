@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   OneToOne,
@@ -26,8 +27,15 @@ export class OrderItem {
   quantity!: number;
 
   @ManyToOne(() => MenuItem)
+  @JoinColumn()
   menuItem!: MenuItem;
+
+  @Column('int')
+  menuItemId!: number;
 
   @ManyToOne(() => Order, (order) => order.orderItems)
   order!: Order;
+
+  @Column('int')
+  orderId!: number;
 }

@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   Index,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -35,5 +36,6 @@ export class Order {
   guest!: Vendor;
 
   @ManyToOne(() => OrderItem, (orderItem) => orderItem.order)
+  @JoinColumn()
   orderItems!: Array<OrderItem>;
 }

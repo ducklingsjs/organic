@@ -1,13 +1,14 @@
 import { Router } from 'express';
-import { allowVendor } from '../../../middlewares/guards/allowVendor';
-import orderId from './id';
+import { getOrderById } from '../../../controllers/order/id/get';
+import { updateOrderById } from '../../../controllers/order/id/patch';
+import { getOrders } from '../../../controllers/order/index/get';
 
 const router = Router();
 
-router.use(allowVendor);
+router.get('/:id', getOrderById);
+router.patch('/:id', updateOrderById);
 
-router.use('/:id', orderId);
-
-router.get('/');
+router.get('/', getOrders);
+// router.post('/', postOrder);
 
 export default router;

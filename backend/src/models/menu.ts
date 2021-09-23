@@ -7,9 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Event } from './event';
 import { MenuItem } from './menu-item';
-import { Organizator } from './organizator';
+import { Vendor } from './vendor';
 
 @Entity()
 export class Menu {
@@ -25,9 +24,12 @@ export class Menu {
   @Column('text')
   description!: string;
 
+  @Column('int')
+  vendorId!: number;
+
   @OneToMany(() => MenuItem, (menuItem) => menuItem.menu)
   menuItems!: Array<MenuItem>;
 
-  @OneToOne(() => Event, (event) => event.menu)
-  event!: Event;
+  @OneToOne(() => Vendor, (vendor) => vendor.menu)
+  vendor!: Vendor;
 }

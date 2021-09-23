@@ -2,8 +2,8 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -38,6 +38,13 @@ export class MenuItem {
   @Column('boolean')
   adults_only!: boolean;
 
+  @Column('int')
+  menuId!: number;
+
+  // @Column('int')
+  // orderItemId!: number;
+
   @ManyToOne(() => Menu, (menu) => menu.menuItems)
+  @JoinColumn()
   menu!: Menu;
 }

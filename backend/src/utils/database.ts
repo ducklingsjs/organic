@@ -1,6 +1,11 @@
 import 'reflect-metadata';
 import { Connection, createConnection, getConnection as getTypeormConnection } from 'typeorm';
 import { Event } from '../models/event';
+import { Guest } from '../models/guest';
+import { Menu } from '../models/menu';
+import { MenuItem } from '../models/menu-item';
+import { Order } from '../models/order';
+import { OrderItem } from '../models/order-item';
 import { Organizator } from '../models/organizator';
 import { Session } from '../models/session';
 import { User } from '../models/user';
@@ -16,7 +21,7 @@ const getConnection = async (): Promise<Connection> => {
   return await createConnection({
     type: 'postgres',
     url: 'postgresql://postgres:vBU255@elKuKRePU@db.rypdushljuuibsanetzu.supabase.co:5432/postgres',
-    entities: [Event, Organizator, Vendor, Session, User],
+    entities: [Event, Order, OrderItem, Guest, Menu, MenuItem, Organizator, Vendor, Session, User],
     synchronize: true,
     logging: 'all',
   }).then(
