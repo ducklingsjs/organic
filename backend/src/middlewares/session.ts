@@ -2,7 +2,7 @@ import session from 'express-session';
 import { TypeormStore } from 'connect-typeorm';
 
 import databaseConnect from '../utils/database';
-import { Session } from '../models/Session';
+import { Session } from '../models/session';
 
 export const sessionMiddleware = async () => {
   const sessionRepository = (await databaseConnect()).getRepository(Session);

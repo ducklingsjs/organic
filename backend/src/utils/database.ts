@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Connection, createConnection, getConnection as getTypeormConnection } from 'typeorm';
-import { Session } from '../models/Session';
+import { Session } from '../models/session';
 
 let dbConnection: Connection | null = null;
 
