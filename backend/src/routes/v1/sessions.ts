@@ -1,26 +1,11 @@
 import { Router } from 'express';
-import { login } from '../../controllers/session/post';
+import { login, logout, read } from '../../controllers/session';
 import { loginBodyValidator } from '../../middlewares/validators/session';
-
-// import { login, register, changePassword } from 'controllers/auth';
-// import { checkJwt } from 'middleware/checkJwt';
-// import {
-//   validatorLogin,
-//   validatorRegister,
-//   validatorChangePassword,
-// } from 'middleware/validation/auth';
 
 const router = Router();
 
-// router.post('/login', [validatorLogin], login);
-// router.post('/register', [validatorRegister], register);
-// router.post('/change-password', [checkJwt, validatorChangePassword], changePassword);
-
 router.post('/', [loginBodyValidator], login);
-
-router.get('/', (req, res) => {
-  console.log(req.session);
-  return res.send('Session');
-});
+router.delete('/', logout);
+router.get('/', read);
 
 export default router;

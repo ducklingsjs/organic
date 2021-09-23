@@ -17,8 +17,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   try {
     const user = await userRepository.findOne({ where: { email } });
 
-    console.log('user', { user });
-
     if (!user || user?.password !== password) {
       return next({
         data: null,
@@ -32,9 +30,13 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
     const { password: _, ...vendor } =
       (await getRepository(Vendor).findOne({ where: { email } })) || {};
+    // @ts-ignore
+    req.session.vendor = vendor;
 
     const { password: __, ...organizator } =
       (await getRepository(Organizator).findOne({ where: { email } })) || {};
+    // @ts-ignore
+    req.session.organizator = organizator;
 
     res.status(200).json({
       data: {
