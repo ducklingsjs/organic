@@ -1,11 +1,14 @@
 import express from 'express';
 import Logger from './logger';
+import { sessionMiddleware } from './middlewares';
 import v1 from './routes/v1';
 
 const port = process.env.PORT || 3000;
 
-function startServer() {
+async function startServer() {
   const app = express();
+
+  app.use(await sessionMiddleware());
 
   app.use('/v1', v1);
 

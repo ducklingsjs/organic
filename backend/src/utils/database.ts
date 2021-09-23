@@ -11,7 +11,7 @@ const getConnection = async (): Promise<Connection> => {
 
   return await createConnection({
     type: 'postgres',
-    url: 'postgresql://postgres:[YOUR-PASSWORD]@db.rypdushljuuibsanetzu.supabase.co:5432/postgres',
+    url: 'postgresql://postgres:vBU255@elKuKRePU@db.rypdushljuuibsanetzu.supabase.co:5432/postgres',
     entities: [Session],
     synchronize: true,
     logging: 'all',

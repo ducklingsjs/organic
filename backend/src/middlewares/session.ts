@@ -4,7 +4,7 @@ import { TypeormStore } from 'connect-typeorm';
 import databaseConnect from '../utils/database';
 import { Session } from '../models/Session';
 
-export const sessionMiddleware = async (app) => {
+export const sessionMiddleware = async () => {
   const sessionRepository = (await databaseConnect()).getRepository(Session);
 
   return session({
@@ -14,8 +14,8 @@ export const sessionMiddleware = async (app) => {
       cleanupLimit: 2,
       ttl: 86400,
     }).connect(sessionRepository),
-    saveUninitialized: false,
-    name: 'pm-session',
+    saveUninitialized: true,
+    name: 'organic-session',
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
       sameSite: false,

@@ -14,4 +14,9 @@ const router = Router();
 // router.post('/register', [validatorRegister], register);
 // router.post('/change-password', [checkJwt, validatorChangePassword], changePassword);
 
+router.get('/', (req, res) => {
+  console.log(req.session);
+  return res.send('Session');
+});
+
 export default router;
